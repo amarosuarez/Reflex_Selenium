@@ -2,17 +2,9 @@ import reflex as rx
 
 from .pages.buscadores import buscadores
 from .pages.redes_sociales import redesSociales
+from .pages.index import index
 
-def index() -> rx.Component:
-    return rx.vstack(
-        rx.heading("Inicio"),
-        rx.list(
-            rx.list_item(rx.link("Buscadores", href="/buscadores", id="buscadores")),
-            rx.list_item(rx.link("Redes sociales", href="/redes-sociales", id="redes-sociales")),
-        ),
-    )
+class State(rx.State):
+    pass
 
 app = rx.App()
-app.add_page(index, route="/")
-app.add_page(buscadores, route="/buscadores")
-app.add_page(redesSociales, route="/redes-sociales")

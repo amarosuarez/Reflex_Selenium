@@ -1,7 +1,12 @@
 import reflex as rx
 
-from reflex_tests import reflex_tests
+from reflex_tests.routes import Ruta
 
+@rx.page(
+    route=Ruta.REDES_SOCIALES.value,
+    title = "Redes Sociales",
+    description="Página de redes sociales"
+)
 def redesSociales() -> rx.Component:
     return rx.vstack(
         rx.heading("Página de Redes Sociales"),
@@ -18,5 +23,4 @@ def redesSociales() -> rx.Component:
         )
     )
 
-app = rx.App()
-app.add_page(reflex_tests, route="/")
+# app = rx.App()

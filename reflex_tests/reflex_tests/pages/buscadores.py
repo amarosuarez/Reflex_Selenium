@@ -1,6 +1,12 @@
 import reflex as rx
 
-from reflex_tests import reflex_tests
+from reflex_tests.routes import Ruta
+
+@rx.page(
+    route=Ruta.BUSCADORES.value,
+    title = "Buscadores",
+    description="Página de buscadores"
+)
 
 def buscadores() -> rx.Component:
     return rx.vstack(
@@ -18,5 +24,4 @@ def buscadores() -> rx.Component:
         )
     )
 
-app = rx.App()
-app.add_page(reflex_tests, route="/")
+# app = rx.App()
