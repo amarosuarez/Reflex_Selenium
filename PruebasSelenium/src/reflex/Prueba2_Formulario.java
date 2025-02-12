@@ -31,7 +31,7 @@ public class Prueba2_Formulario {
     }
 
 	/**
-	 * Comprueba que esté el input de nombre
+	 * Comprueba que esté el input de nombre y que su longitud sea 50
 	 */
 	@Test
 	void testInputNombre() {
@@ -40,10 +40,11 @@ public class Prueba2_Formulario {
 
 		assertNotNull(inputNombre);
 		assertEquals("text", inputNombre.getAttribute("type"));
+		assertEquals("50", inputNombre.getAttribute("maxlength"));
 	}
 	
 	/**
-	 * Comprueba que esté el input de apellidos
+	 * Comprueba que esté el input de apellidos y que su longitud sea 50
 	 */
 	@Test
 	void testInputApellidos() {
@@ -52,6 +53,7 @@ public class Prueba2_Formulario {
 
 		assertNotNull(inputApellidos);
 		assertEquals("text", inputApellidos.getAttribute("type"));
+		assertEquals("50", inputApellidos.getAttribute("maxlength"));
 	}
 	
 	/**
@@ -100,7 +102,62 @@ public class Prueba2_Formulario {
 	    WebElement radioSelect = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("radioSelect")));
 	    assertEquals("mujer", radioSelect.getText());
 	}
+	
+	/**
+	 * Comprueba que esté el input del email
+	 */
+	@Test
+	void testInputEmail() {
+		driver1.get("http://localhost:3000/");
+		WebElement inputEmail = driver1.findElement(By.id("email"));
 
+		assertNotNull(inputEmail);
+		assertEquals("text", inputEmail.getAttribute("type"));
+	}
 	
+	/**
+	 * Comprueba que esté el checkbox de las ofertas y novedades
+	 * Y que esté activado
+	 */
+	@Test
+	void testCheckboxOfertas() {
+		driver1.get("http://localhost:3000/");
+		WebElement checkOffers = driver1.findElement(By.id("check-offers"));
+
+		assertNotNull(checkOffers);
+		assertEquals("true", checkOffers.getAttribute("aria-checked"));
+	}
 	
+	/**
+	 * Comprueba que esté el checkbox de términos
+	 */
+	@Test
+	void testCheckboxTerms() {
+		driver1.get("http://localhost:3000/");
+		WebElement checkTerms = driver1.findElement(By.id("check-terms"));
+
+		assertNotNull(checkTerms);
+	}
+	
+	/**
+	 * Comprueba que esté el botón para enviar
+	 */
+	@Test
+	void testButton() {
+		driver1.get("http://localhost:3000/");
+		WebElement button = driver1.findElement(By.id("btSend"));
+
+		assertNotNull(button);
+	}
+
+	/**
+	 * Comprueba el título de la página
+	 */
+	@Test
+	void testTitle() {
+		driver1.get("http://localhost:3000/");
+		String titulo = driver1.getTitle();
+		
+		assertEquals("Formulario de registro - Mi web", titulo);
+	}
 }
